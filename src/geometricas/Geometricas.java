@@ -62,10 +62,11 @@ public class Geometricas {
                 break;
 
             case "convexo":
-                int i = 0;
-                while (teclado.next() != "n") {
+                System.out.println("Ingrese lados");
+                radio = teclado.next();
+                punto = new Punto[Integer.parseInt(radio)];
+                for(int i = 0;i<Integer.parseInt(radio);i++) {
                     punto[i] = new Punto();
-                    i++;
                 }
                 figura = new Convexo(punto);
 

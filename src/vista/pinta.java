@@ -86,6 +86,18 @@ public class pinta extends javax.swing.JFrame {
         x4x = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         y4x = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        x5x = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        y5x = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        x6x = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        y6x = new javax.swing.JTextField();
+        x7x = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        y7x = new javax.swing.JTextField();
         lados = new javax.swing.JSpinner();
         jLabel17 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -236,7 +248,7 @@ public class pinta extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Circulo", jPanel1);
@@ -416,7 +428,7 @@ public class pinta extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Triangulo", jPanel2);
@@ -439,6 +451,30 @@ public class pinta extends javax.swing.JFrame {
 
         jLabel29.setText("Y:");
 
+        jLabel30.setText("X:");
+
+        x5x.setEnabled(false);
+
+        jLabel31.setText("Y:");
+
+        y5x.setEnabled(false);
+
+        jLabel32.setText("X:");
+
+        x6x.setEnabled(false);
+
+        jLabel33.setText("Y:");
+
+        y6x.setEnabled(false);
+
+        x7x.setEnabled(false);
+
+        jLabel34.setText("X:");
+
+        jLabel35.setText("Y:");
+
+        y7x.setEnabled(false);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -453,7 +489,7 @@ public class pinta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23)
                         .addGap(6, 6, 6)
-                        .addComponent(y1x))
+                        .addComponent(y1x, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addGap(4, 4, 4)
@@ -477,7 +513,31 @@ public class pinta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel29)
                         .addGap(6, 6, 6)
-                        .addComponent(y4x)))
+                        .addComponent(y4x))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addGap(4, 4, 4)
+                        .addComponent(x5x, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel31)
+                        .addGap(6, 6, 6)
+                        .addComponent(y5x))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addGap(4, 4, 4)
+                        .addComponent(x6x, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel33)
+                        .addGap(6, 6, 6)
+                        .addComponent(y6x))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addGap(4, 4, 4)
+                        .addComponent(x7x, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel35)
+                        .addGap(6, 6, 6)
+                        .addComponent(y7x)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -507,8 +567,33 @@ public class pinta extends javax.swing.JFrame {
                     .addComponent(x4x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29)
                     .addComponent(y4x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(x5x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31)
+                    .addComponent(y5x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(x6x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33)
+                    .addComponent(y6x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(x7x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35)
+                    .addComponent(y7x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        lados.setModel(new javax.swing.SpinnerNumberModel(4, 4, 7, 1));
+        lados.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                agregaCoordenada(evt);
+            }
+        });
 
         jLabel17.setText("Lados:");
 
@@ -583,8 +668,6 @@ public class pinta extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        lados.setValue(4);
-
         jTabbedPane2.addTab("Convexo", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -593,7 +676,7 @@ public class pinta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -639,6 +722,13 @@ public class pinta extends javax.swing.JFrame {
             at.setText(String.valueOf(figura.area()));
         }
     }//GEN-LAST:event_ctMouseClicked
+
+    private void agregaCoordenada(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_agregaCoordenada
+        javax.swing.JTextField x5x;
+        x5x = new javax.swing.JTextField();
+        jPanel7.add(x5x);
+        System.out.println(lados.getValue());
+    }//GEN-LAST:event_agregaCoordenada
 
     /**
      * @param args the command line arguments
@@ -699,6 +789,12 @@ public class pinta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -729,6 +825,9 @@ public class pinta extends javax.swing.JFrame {
     private javax.swing.JTextField x3t;
     private javax.swing.JTextField x3x;
     private javax.swing.JTextField x4x;
+    private javax.swing.JTextField x5x;
+    private javax.swing.JTextField x6x;
+    private javax.swing.JTextField x7x;
     private javax.swing.JTextField y1c;
     private javax.swing.JTextField y1t;
     private javax.swing.JTextField y1x;
@@ -737,6 +836,9 @@ public class pinta extends javax.swing.JFrame {
     private javax.swing.JTextField y3t;
     private javax.swing.JTextField y3x;
     private javax.swing.JTextField y4x;
+    private javax.swing.JTextField y5x;
+    private javax.swing.JTextField y6x;
+    private javax.swing.JTextField y7x;
     // End of variables declaration//GEN-END:variables
 
 }
