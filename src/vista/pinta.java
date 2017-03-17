@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import modelo.Circulo;
 import modelo.Convexo;
 import modelo.Figura;
-import modelo.Linea;
 import modelo.Punto;
 import modelo.Triangulo;
 
@@ -794,6 +793,9 @@ public class pinta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccMouseClicked
+        pc.setText("");
+        ac.setText("");
+        
         if (x1c.getText().length() > 0 && y1c.getText().length() > 0 && radio.getText().length() > 0) {
             Punto[] punto = new Punto[1];
             punto[0] = new Punto(Integer.parseInt(x1c.getText()), Integer.parseInt(y1c.getText()));
@@ -812,6 +814,9 @@ public class pinta extends javax.swing.JFrame {
     }//GEN-LAST:event_soloNumeros
 
     private void ctMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ctMouseClicked
+        pt.setText("");
+        at.setText("");
+        
         if (x1t.getText().length() > 0 && y1t.getText().length() > 0
                 && x2t.getText().length() > 0 && y2t.getText().length() > 0
                 && x3t.getText().length() > 0 && y3t.getText().length() > 0) {
@@ -827,7 +832,31 @@ public class pinta extends javax.swing.JFrame {
     }//GEN-LAST:event_ctMouseClicked
 
     private void agregaCoordenada(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_agregaCoordenada
-        System.out.println(lados.getValue());
+        switch((int) lados.getValue()) {
+            case 4:
+                x5x.setEnabled(false);
+                y5x.setEnabled(false);
+                break;
+                
+            case 5:
+                x5x.setEnabled(true);
+                y5x.setEnabled(true);
+                x6x.setEnabled(false);
+                y6x.setEnabled(false);
+                break;
+                
+            case 6:
+                x6x.setEnabled(true);
+                y6x.setEnabled(true);
+                x7x.setEnabled(false);
+                y7x.setEnabled(false);
+                break;
+                
+            case 7:
+                x7x.setEnabled(true);
+                y7x.setEnabled(true);
+                break;
+        }
     }//GEN-LAST:event_agregaCoordenada
 
     private void cxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxMouseClicked
@@ -836,13 +865,14 @@ public class pinta extends javax.swing.JFrame {
         boolean calcula = true;
         Punto[] punto = null;
         int j = 0;
-
+        px.setText("");
+        ax.setText("");
+        
         for (Component c : jPanel7.getComponents()) {
             if (c instanceof javax.swing.JTextField) {
                 if (((javax.swing.JTextField) c).isEnabled() && !((javax.swing.JTextField) c).getText().equals("")) {
                     valores.add(Integer.parseInt(((javax.swing.JTextField) c).getText()));
                 } else if (((javax.swing.JTextField) c).isEnabled()) {
-                    System.out.println(((javax.swing.JTextField) c).getName());
                     calcula = false;
                 }
             }
@@ -851,7 +881,6 @@ public class pinta extends javax.swing.JFrame {
         if (calcula) {
             punto = new Punto[valores.size() / 2];
             for (int i = 0; i < valores.size(); i = i + 2) {
-                System.out.println(j+":"+valores.get(i)+"|"+valores.get(i+1));
                 punto[j] = new Punto(valores.get(i), valores.get(i + 1));
                 j++;
             }
