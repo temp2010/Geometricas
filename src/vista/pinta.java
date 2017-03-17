@@ -5,9 +5,12 @@
  */
 package vista;
 
+import java.awt.Component;
+import java.util.ArrayList;
 import modelo.Circulo;
 import modelo.Convexo;
 import modelo.Figura;
+import modelo.Linea;
 import modelo.Punto;
 import modelo.Triangulo;
 
@@ -17,6 +20,7 @@ import modelo.Triangulo;
  */
 public class pinta extends javax.swing.JFrame {
 
+    Figura figura;
     /**
      * Creates new form pinta
      */
@@ -437,43 +441,135 @@ public class pinta extends javax.swing.JFrame {
 
         jLabel22.setText("X:");
 
+        x1x.setName("x1x"); // NOI18N
+        x1x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
+
         jLabel23.setText("Y:");
+
+        y1x.setName("y1x"); // NOI18N
+        y1x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel24.setText("X:");
 
+        x2x.setName("x2x"); // NOI18N
+        x2x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
+
         jLabel25.setText("Y:");
+
+        y2x.setName("y2x"); // NOI18N
+        y2x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel26.setText("X:");
 
+        x3x.setName("x3x"); // NOI18N
+        x3x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
+
         jLabel27.setText("Y:");
+
+        y3x.setName("y3x"); // NOI18N
+        y3x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel28.setText("X:");
 
+        x4x.setName("x4x"); // NOI18N
+        x4x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
+
         jLabel29.setText("Y:");
+
+        y4x.setName("y4x"); // NOI18N
+        y4x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel30.setText("X:");
 
         x5x.setEnabled(false);
+        x5x.setName("x5x"); // NOI18N
+        x5x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel31.setText("Y:");
 
         y5x.setEnabled(false);
+        y5x.setName("y5x"); // NOI18N
+        y5x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel32.setText("X:");
 
         x6x.setEnabled(false);
+        x6x.setName("x6x"); // NOI18N
+        x6x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel33.setText("Y:");
 
         y6x.setEnabled(false);
+        y6x.setName("y6x"); // NOI18N
+        y6x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         x7x.setEnabled(false);
+        x7x.setName("x7x"); // NOI18N
+        x7x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         jLabel34.setText("X:");
 
         jLabel35.setText("Y:");
 
         y7x.setEnabled(false);
+        y7x.setName("y7x"); // NOI18N
+        y7x.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                soloNumeros(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -489,7 +585,7 @@ public class pinta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23)
                         .addGap(6, 6, 6)
-                        .addComponent(y1x, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                        .addComponent(y1x))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addGap(4, 4, 4)
@@ -611,29 +707,35 @@ public class pinta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(px, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(px, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ax, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ax, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(px, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel20))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel20))
+                    .addComponent(ax, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(px, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         cx.setText("Calcular");
+        cx.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -676,7 +778,7 @@ public class pinta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -694,8 +796,8 @@ public class pinta extends javax.swing.JFrame {
         if (x1c.getText().length() > 0 && y1c.getText().length() > 0 && radio.getText().length() > 0) {
             Punto[] punto = new Punto[1];
             punto[0] = new Punto(Integer.parseInt(x1c.getText()), Integer.parseInt(y1c.getText()));
-            Figura figura = new Circulo(Integer.parseInt(radio.getText()), punto);
-            
+            figura = new Circulo(Integer.parseInt(radio.getText()), punto);
+
             pc.setText(String.valueOf(figura.perimetro()));
             ac.setText(String.valueOf(figura.area()));
         }
@@ -703,32 +805,61 @@ public class pinta extends javax.swing.JFrame {
 
     private void soloNumeros(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_soloNumeros
         char caracter = evt.getKeyChar();
-        if(((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+        if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
             evt.consume();
-      }
+        }
     }//GEN-LAST:event_soloNumeros
 
     private void ctMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ctMouseClicked
-        if (x1t.getText().length() > 0 && y1t.getText().length() > 0 &&
-            x2t.getText().length() > 0 && y2t.getText().length() > 0 &&
-            x3t.getText().length() > 0 && y3t.getText().length() > 0) {
+        if (x1t.getText().length() > 0 && y1t.getText().length() > 0
+                && x2t.getText().length() > 0 && y2t.getText().length() > 0
+                && x3t.getText().length() > 0 && y3t.getText().length() > 0) {
             Punto[] punto = new Punto[3];
             punto[0] = new Punto(Integer.parseInt(x1t.getText()), Integer.parseInt(y1t.getText()));
             punto[1] = new Punto(Integer.parseInt(x2t.getText()), Integer.parseInt(y2t.getText()));
             punto[2] = new Punto(Integer.parseInt(x3t.getText()), Integer.parseInt(y3t.getText()));
-            Figura figura = new Triangulo(punto);
-            
+            figura = new Triangulo(punto);
+
             pt.setText(String.valueOf(figura.perimetro()));
             at.setText(String.valueOf(figura.area()));
         }
     }//GEN-LAST:event_ctMouseClicked
 
     private void agregaCoordenada(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_agregaCoordenada
-        javax.swing.JTextField x5x;
-        x5x = new javax.swing.JTextField();
-        jPanel7.add(x5x);
         System.out.println(lados.getValue());
     }//GEN-LAST:event_agregaCoordenada
+
+    private void cxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxMouseClicked
+
+        ArrayList<Integer> valores = new ArrayList<>();
+        boolean calcula = true;
+        Punto[] punto = null;
+        int j = 0;
+
+        for (Component c : jPanel7.getComponents()) {
+            if (c instanceof javax.swing.JTextField) {
+                if (((javax.swing.JTextField) c).isEnabled() && !((javax.swing.JTextField) c).getText().equals("")) {
+                    valores.add(Integer.parseInt(((javax.swing.JTextField) c).getText()));
+                } else if (((javax.swing.JTextField) c).isEnabled()) {
+                    System.out.println(((javax.swing.JTextField) c).getName());
+                    calcula = false;
+                }
+            }
+        }
+
+        if (calcula) {
+            punto = new Punto[valores.size() / 2];
+            for (int i = 0; i < valores.size(); i = i + 2) {
+                System.out.println(j+":"+valores.get(i)+"|"+valores.get(i+1));
+                punto[j] = new Punto(valores.get(i), valores.get(i + 1));
+                j++;
+            }
+            figura = new Convexo(punto);
+            
+            px.setText(String.valueOf(figura.perimetro()));
+            ax.setText(String.valueOf(figura.area()));
+        }
+    }//GEN-LAST:event_cxMouseClicked
 
     /**
      * @param args the command line arguments

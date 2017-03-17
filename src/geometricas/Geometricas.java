@@ -27,14 +27,15 @@ public class Geometricas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+        pinta vista = new pinta();
+        vista.setVisible(true);
+        /*
+        // Mode Text
         Scanner teclado = new Scanner(System.in);
         Figura figura = null;
         Punto[] punto = null;
         String nombreFigura;
-
-        pinta vista = new pinta();
-        vista.setVisible(true);
-        
         System.out.println("Ingrese el tipo de figura");
         nombreFigura = teclado.next();
 
@@ -75,5 +76,6 @@ public class Geometricas {
 
         System.out.println(figura.area());
         System.out.println(figura.perimetro());
+        */
     }
 }
