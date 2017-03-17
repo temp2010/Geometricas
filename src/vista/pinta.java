@@ -112,6 +112,7 @@ public class pinta extends javax.swing.JFrame {
         cx = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Áreas y Perímetros");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Coordenadas"));
 
