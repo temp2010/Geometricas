@@ -14,6 +14,9 @@ public class Linea {
     private Punto desde, hasta;
     private double dista;
 
+    public Linea() {
+    }
+    
     public Linea(Punto desde, Punto hasta) {
         this.desde = desde;
         this.hasta = hasta;

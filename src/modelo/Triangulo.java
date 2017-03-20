@@ -11,25 +11,38 @@ package modelo;
  */
 public class Triangulo extends Figura {
 
-    Linea[] linea = new Linea[3];
+    Linea linea;
+
+    public Triangulo() {
+        super(null);
+    }
 
     public Triangulo(Punto[] punto) {
         super(punto);
-
-        linea[0] = new Linea(this.puntos[0], this.puntos[1]);
-        linea[1] = new Linea(this.puntos[1], this.puntos[2]);
-        linea[2] = new Linea(this.puntos[2], this.puntos[0]);
     }
 
     @Override
     public double area() {
-        double s = (linea[0].getDista() + linea[1].getDista() + linea[2].getDista()) / 2;
-        return Math.sqrt((s * (s - linea[0].getDista()) * (s - linea[1].getDista()) * (s - linea[2].getDista())));
+        double a, b, c;
+        
+        a = new Linea(this.puntos[0], this.puntos[1]).getDista();
+        b = new Linea(this.puntos[1], this.puntos[2]).getDista();
+        c = new Linea(this.puntos[2], this.puntos[0]).getDista();
+        double s = (a + b + c) / 2;
+        return Math.sqrt((s * (s - a) * (s - b) * (s - c)));
     }
 
     @Override
     public double perimetro() {
-        return linea[0].getDista() + linea[1].getDista() + linea[2].getDista();
+        double perimetro = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int j = (i < 2) ? i + 1 : 0;
+            linea = new Linea(puntos[i], puntos[j]);
+            perimetro += linea.getDista();
+        }
+
+        return perimetro;
     }
 
 }

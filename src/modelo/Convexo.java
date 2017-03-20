@@ -12,28 +12,13 @@ package modelo;
 public class Convexo extends Figura {
 
     Punto[] puntoT;
-    Linea[] linea;
-    Triangulo[] convexo;
+
+    public Convexo() {
+        super(null);
+    }
 
     public Convexo(Punto[] punto) {
         super(punto);
-
-        int i, j, nTriangulos = punto.length - 2;
-        linea = new Linea[punto.length];
-        convexo = new Triangulo[nTriangulos];
-
-        for (i = 0; i < punto.length; i++) {
-            j = (i < punto.length - 1) ? i + 1 : 0;
-            linea[i] = new Linea(puntos[i], this.puntos[j]);
-        }
-
-        for (i = 0; i < nTriangulos; i++) {
-            puntoT = new Punto[3];
-            puntoT[0] = punto[0];
-            puntoT[1] = punto[i + 1];
-            puntoT[2] = punto[i + 2];
-            convexo[i] = new Triangulo(puntoT);
-        }
     }
 
     @Override
@@ -41,20 +26,27 @@ public class Convexo extends Figura {
         int i;
         double area = 0;
 
-        for (i = 0; i < convexo.length; i++) {
-            area += convexo[i].area();
+        for (i = 0; i < super.puntos.length - 2; i++) {
+            puntoT = new Punto[3];
+            puntoT[0] = super.puntos[0];
+            puntoT[1] = super.puntos[i + 1];
+            puntoT[2] = super.puntos[i + 2];
+            area += new Triangulo(puntoT).area();
         }
+
         return area;
     }
 
     @Override
     public double perimetro() {
-        int i;
+        int i, j;
         double perimetro = 0;
 
-        for (i = 0; i < linea.length; i++) {
-            perimetro += linea[i].getDista();
+        for (i = 0; i < super.puntos.length; i++) {
+            j = (i < super.puntos.length - 1) ? i + 1 : 0;
+            perimetro += new Linea(super.puntos[i], super.puntos[j]).getDista();
         }
+
         return perimetro;
     }
 

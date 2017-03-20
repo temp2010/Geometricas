@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package geometricas;
-
+/*
 import java.util.Scanner;
 
 import modelo.Circulo;
@@ -12,6 +12,8 @@ import modelo.Convexo;
 import modelo.Figura;
 import modelo.Punto;
 import modelo.Triangulo;
+*/
+import ado.bd;
 import vista.pinta;
 
 /**
@@ -29,7 +31,9 @@ public class Geometricas {
     public static void main(String[] args) {
 
         pinta vista = new pinta();
+        bd coneccion = new bd();
         vista.setVisible(true);
+
         /*
         // Mode Text
         Scanner teclado = new Scanner(System.in);
