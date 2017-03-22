@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Estudiantes
@@ -12,6 +14,22 @@ package modelo;
 public class Circulo extends Figura {
 
     int radio;
+
+    public Circulo() {
+        super(null);
+        String radio;
+        Punto[] punto = new Punto[1];
+        Scanner teclado = new Scanner(System.in);
+
+        punto[0] = new Punto();
+        do {
+            System.out.println("Ingrese el radio");
+            radio = teclado.next();
+        } while (!punto[0].validaNumero(radio));
+
+        super.puntos = punto;
+        this.radio = Integer.parseInt(radio);
+    }
 
     public Circulo(int radio, Punto[] centro) {
         super(centro);

@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Estudiantes
@@ -15,6 +17,17 @@ public class Convexo extends Figura {
 
     public Convexo() {
         super(null);
+        String lados;
+        Punto[] punto = new Punto[1];
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.println("Ingrese lados");
+        lados = teclado.next();
+        punto = new Punto[Integer.parseInt(lados)];
+        for(int i = 0;i<Integer.parseInt(lados);i++) {
+            punto[i] = new Punto();
+        }
+        super.puntos = punto;
     }
 
     public Convexo(Punto[] punto) {

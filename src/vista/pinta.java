@@ -5,8 +5,13 @@
  */
 package vista;
 
+import ado.bd;
 import java.awt.Component;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Circulo;
 import modelo.Convexo;
 import modelo.Figura;
@@ -20,10 +25,13 @@ import modelo.Triangulo;
 public class pinta extends javax.swing.JFrame {
 
     Figura figura;
+    bd conexion;
+
     /**
      * Creates new form pinta
      */
-    public pinta() {
+    public pinta(bd conexion) {
+        this.conexion = conexion;
         initComponents();
     }
 
@@ -51,6 +59,7 @@ public class pinta extends javax.swing.JFrame {
         pc = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         ac = new javax.swing.JLabel();
+        bdc = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -71,6 +80,7 @@ public class pinta extends javax.swing.JFrame {
         pt = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         at = new javax.swing.JLabel();
+        bdt = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -109,6 +119,7 @@ public class pinta extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         ax = new javax.swing.JLabel();
         cx = new javax.swing.JButton();
+        bdx = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Áreas y Perímetros");
@@ -231,28 +242,43 @@ public class pinta extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        bdc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
+        bdc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bdcActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bdc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(bdc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Circulo", jPanel1);
@@ -414,6 +440,13 @@ public class pinta extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        bdt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
+        bdt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bdtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -422,17 +455,22 @@ public class pinta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(bdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Triangulo", jPanel2);
@@ -585,7 +623,7 @@ public class pinta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23)
                         .addGap(6, 6, 6)
-                        .addComponent(y1x))
+                        .addComponent(y1x, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addGap(4, 4, 4)
@@ -617,23 +655,27 @@ public class pinta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel31)
                         .addGap(6, 6, 6)
-                        .addComponent(y5x))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(y6x)
+                            .addComponent(y5x)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel32)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel32)
+                            .addComponent(jLabel34))
                         .addGap(4, 4, 4)
-                        .addComponent(x6x, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel33)
-                        .addGap(6, 6, 6)
-                        .addComponent(y6x))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(4, 4, 4)
-                        .addComponent(x7x, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel35)
-                        .addGap(6, 6, 6)
-                        .addComponent(y7x)))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(x7x, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(x6x, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel33)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel35)
+                                .addGap(6, 6, 6)
+                                .addComponent(y7x)))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -675,13 +717,13 @@ public class pinta extends javax.swing.JFrame {
                     .addComponent(x6x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33)
                     .addComponent(y6x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
                     .addComponent(x7x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(y7x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35)
-                    .addComponent(y7x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jLabel34))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lados.setModel(new javax.swing.SpinnerNumberModel(4, 4, 7, 1));
@@ -737,6 +779,13 @@ public class pinta extends javax.swing.JFrame {
             }
         });
 
+        bdx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
+        bdx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bdxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -746,12 +795,13 @@ public class pinta extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cx))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cx)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bdx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -762,12 +812,13 @@ public class pinta extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cx)
-                    .addComponent(jLabel17))
+                    .addComponent(jLabel17)
+                    .addComponent(bdx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Convexo", jPanel3);
@@ -785,8 +836,8 @@ public class pinta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2)
-                .addContainerGap())
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -795,7 +846,7 @@ public class pinta extends javax.swing.JFrame {
     private void ccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccMouseClicked
         pc.setText("");
         ac.setText("");
-        
+
         if (x1c.getText().length() > 0 && y1c.getText().length() > 0 && radio.getText().length() > 0) {
             Punto[] punto = new Punto[1];
             punto[0] = new Punto(Integer.parseInt(x1c.getText()), Integer.parseInt(y1c.getText()));
@@ -816,7 +867,7 @@ public class pinta extends javax.swing.JFrame {
     private void ctMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ctMouseClicked
         pt.setText("");
         at.setText("");
-        
+
         if (x1t.getText().length() > 0 && y1t.getText().length() > 0
                 && x2t.getText().length() > 0 && y2t.getText().length() > 0
                 && x3t.getText().length() > 0 && y3t.getText().length() > 0) {
@@ -832,26 +883,26 @@ public class pinta extends javax.swing.JFrame {
     }//GEN-LAST:event_ctMouseClicked
 
     private void agregaCoordenada(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_agregaCoordenada
-        switch((int) lados.getValue()) {
+        switch ((int) lados.getValue()) {
             case 4:
                 x5x.setEnabled(false);
                 y5x.setEnabled(false);
                 break;
-                
+
             case 5:
                 x5x.setEnabled(true);
                 y5x.setEnabled(true);
                 x6x.setEnabled(false);
                 y6x.setEnabled(false);
                 break;
-                
+
             case 6:
                 x6x.setEnabled(true);
                 y6x.setEnabled(true);
                 x7x.setEnabled(false);
                 y7x.setEnabled(false);
                 break;
-                
+
             case 7:
                 x7x.setEnabled(true);
                 y7x.setEnabled(true);
@@ -867,7 +918,7 @@ public class pinta extends javax.swing.JFrame {
         int j = 0;
         px.setText("");
         ax.setText("");
-        
+
         for (Component c : jPanel7.getComponents()) {
             if (c instanceof javax.swing.JTextField) {
                 if (((javax.swing.JTextField) c).isEnabled() && !((javax.swing.JTextField) c).getText().equals("")) {
@@ -885,11 +936,106 @@ public class pinta extends javax.swing.JFrame {
                 j++;
             }
             figura = new Convexo(punto);
-            
+
             px.setText(String.valueOf(figura.perimetro()));
             ax.setText(String.valueOf(figura.area()));
         }
     }//GEN-LAST:event_cxMouseClicked
+
+    private void bdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdtActionPerformed
+        ResultSet forma;
+        int[] x = new int[3], y = new int[3];
+
+        try {
+            if(!this.bdt.getSelectedItem().equals("Seleccione..")) {
+                forma = conexion.ejecutar("SELECT id_pol, x, y FROM forma NATURAL JOIN puntos WHERE id_pol = " + this.bdt.getSelectedItem());
+                int i = 0;
+                while (forma.next()) {
+                    x[i] = forma.getInt("x");
+                    y[i] = forma.getInt("y");
+                    i++;
+                }
+                this.x1t.setText(String.valueOf(x[0]));
+                this.y1t.setText(String.valueOf(y[0]));
+                this.x2t.setText(String.valueOf(x[1]));
+                this.y2t.setText(String.valueOf(y[1]));
+                this.x3t.setText(String.valueOf(x[2]));
+                this.y3t.setText(String.valueOf(y[2]));
+            } else {
+                this.x1t.setText("");
+                this.y1t.setText("");
+                this.x2t.setText("");
+                this.y2t.setText("");
+                this.x3t.setText("");
+                this.y3t.setText("");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(pinta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bdtActionPerformed
+
+    private void bdxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdxActionPerformed
+        ResultSet forma;
+        int lados = 0;
+        int[] x, y;
+
+        try {
+            if(!this.bdx.getSelectedItem().equals("Seleccione..")) {
+                forma = conexion.ejecutar("SELECT id_pol, x, y FROM forma NATURAL JOIN puntos WHERE id_pol = " + this.bdx.getSelectedItem());
+                int i = 0;
+                if (forma.last()) {
+                    lados = forma.getRow();
+                    forma.first();
+                }
+                x = new int[lados];
+                y = new int[lados];
+                do {
+                    x[i] = forma.getInt("x");
+                    y[i] = forma.getInt("y");
+                    i++;
+                } while (forma.next());
+                this.lados.setValue(lados);
+                this.x1x.setText(String.valueOf(x[0]));
+                this.y1x.setText(String.valueOf(y[0]));
+                this.x2x.setText(String.valueOf(x[1]));
+                this.y2x.setText(String.valueOf(y[1]));
+                this.x3x.setText(String.valueOf(x[2]));
+                this.y3x.setText(String.valueOf(y[2]));
+                this.x4x.setText(String.valueOf(x[3]));
+                this.y4x.setText(String.valueOf(y[3]));
+                if (lados > 4) {
+                    this.x5x.setText(String.valueOf(x[4]));
+                    this.y5x.setText(String.valueOf(y[4]));
+                } else if (lados > 5) {
+                    this.x6x.setText(String.valueOf(x[5]));
+                    this.y6x.setText(String.valueOf(y[5]));
+                } else if (lados > 6) {
+                    this.x7x.setText(String.valueOf(x[6]));
+                    this.y7x.setText(String.valueOf(y[6]));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(pinta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bdxActionPerformed
+
+    private void bdcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdcActionPerformed
+        ResultSet forma;
+
+        try {
+            if(!this.bdc.getSelectedItem().equals("Seleccione..")) {
+                forma = conexion.ejecutar("SELECT id_pol, x, y FROM forma NATURAL JOIN puntos WHERE id_pol = " + this.bdc.getSelectedItem());
+                forma.first();
+                this.x1c.setText(forma.getString("x"));
+                this.y1c.setText(forma.getString("x"));
+            } else {
+                this.x1c.setText("");
+                this.y1c.setText("");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(pinta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bdcActionPerformed
 
     /**
      * @param args the command line arguments
@@ -921,7 +1067,8 @@ public class pinta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pinta().setVisible(true);
+                bd conexion = null;
+                new pinta(conexion).setVisible(true);
             }
         });
     }
@@ -930,6 +1077,9 @@ public class pinta extends javax.swing.JFrame {
     private javax.swing.JLabel ac;
     private javax.swing.JLabel at;
     private javax.swing.JLabel ax;
+    public javax.swing.JComboBox<String> bdc;
+    public javax.swing.JComboBox<String> bdt;
+    public javax.swing.JComboBox<String> bdx;
     private javax.swing.JButton cc;
     private javax.swing.JButton ct;
     private javax.swing.JButton cx;

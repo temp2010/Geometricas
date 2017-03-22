@@ -15,6 +15,11 @@ public class Triangulo extends Figura {
 
     public Triangulo() {
         super(null);
+        Punto[] punto = new Punto[3];
+        for (int i = 0; i < 3; i++) {
+            punto[i] = new Punto();
+        }
+        super.puntos = punto;
     }
 
     public Triangulo(Punto[] punto) {

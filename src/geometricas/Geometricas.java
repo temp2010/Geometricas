@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package geometricas;
+
 /*
 import java.util.Scanner;
 
@@ -12,8 +13,11 @@ import modelo.Convexo;
 import modelo.Figura;
 import modelo.Punto;
 import modelo.Triangulo;
-*/
+ */
 import ado.bd;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import vista.pinta;
 
 /**
@@ -22,17 +26,24 @@ import vista.pinta;
  */
 public class Geometricas {
 
-    public Geometricas() {
+    bd conexion;
+
+    public Geometricas() throws SQLException, IOException {
+        conexion = new bd();
+        pinta vista = new pinta(conexion);
+        
+        if (conexion.isEstado()) {
+            importar(vista);
+        }
+        vista.setVisible(true);
     }
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
-    public static void main(String[] args) {
-
-        pinta vista = new pinta();
-        bd coneccion = new bd();
-        vista.setVisible(true);
+    public static void main(String[] args) throws SQLException, IOException {
+        Geometricas geo = new Geometricas();
 
         /*
         // Mode Text
@@ -80,6 +91,30 @@ public class Geometricas {
 
         System.out.println(figura.area());
         System.out.println(figura.perimetro());
-        */
+         */
+    }
+
+    public void importar(pinta vista) throws SQLException {
+        ResultSet figuras, forma;
+        
+        figuras = conexion.ejecutar("SELECT id_pol FROM poligonos");
+        while (figuras.next()) {
+            forma = conexion.ejecutar("SELECT id_pol FROM forma WHERE id_pol = " + figuras.getString("id_pol"));
+            if (forma.last()) {
+                int lados = forma.getRow();
+
+                switch (lados) {
+                    case 1:
+                        vista.bdc.addItem(figuras.getString("id_pol"));
+                        break;
+                    case 3:
+                        vista.bdt.addItem(figuras.getString("id_pol"));
+                        break;
+                    default:
+                        vista.bdx.addItem(figuras.getString("id_pol"));
+                        break;
+                }
+            }
+        }
     }
 }
